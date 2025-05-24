@@ -1,0 +1,21 @@
+.sidenav-container{
+
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #979797;
+  border: 1px solid black;
+  height:100vh;
+}
+
+ul {
+
+  padding-left: 20px;
+
+  li{
+    list-style: none;
+    padding: 10px;
+    padding-left: 0px;
+  }
+
+}
