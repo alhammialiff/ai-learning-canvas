@@ -4,18 +4,28 @@
   top: 0px;
   left: 0px;
   background-color: #979797;
-  border: 1px solid black;
-  height:100vh;
+  // border: 1px solid black;
+  width: 200px;
+  height: 100vh;
+  box-shadow: 2px 2px 2px rgb(117, 117, 117);
 }
 
 ul {
 
-  padding-left: 20px;
+  padding-left: 1.5rem;
 
   li{
     list-style: none;
-    padding: 10px;
-    padding-left: 0px;
+    padding: 0.75rem;
+  }
+
+  li:hover{
+
+    color: #f2f2f2;
+    background-color: #696969;
+    transition: color 0.25s ease-in-out;
+    transition: background-color 0.25s ease-in-out;
+
   }
 
 }

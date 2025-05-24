@@ -5,16 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RootUiContainerComponent } from './root-ui-container/root-ui-container.component';
 import { SidenavContainerComponent } from './sidenav-container/sidenav-container.component';
+import { MainContentContainerComponent } from './main-content-container/main-content-container.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     RootUiContainerComponent,
-    SidenavContainerComponent
+    SidenavContainerComponent,
+    MainContentContainerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
