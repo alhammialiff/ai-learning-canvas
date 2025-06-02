@@ -5,3 +5,105 @@
 
 
 }
+
+.dataset-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.grid-item {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  background: #f2f2f2;
+  // border: 1px solid #f7f7f7;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1c1c1c;
+  box-shadow: 1px 2px 6px #8b8b8b;
+}
+
+
+.grid-item:hover {
+  background: rgba(0,0,0,0.5);
+  transition: background-color 0.3s linear;
+  color: black;
+  transition: color 0.3s linear;
+}
+
+.dataset-title{
+  position: relative;
+  top: 20px;
+  text-align: center;
+
+}
+
+.dataset-title:hover{
+
+  transition: filter 0.3s linear;
+
+}
+
+#iris-grid{
+
+  background-image: url('/assets/images/iris.jpg');
+  background-size: cover;
+  color: rgb(183, 183, 183);
+
+}
+
+#iris-grid:hover{
+
+  background-blend-mode:luminosity;
+  color: white;
+  transition: color 0.3s linear;
+
+}
+
+#heart-disease-grid{
+
+  background-image: url('/assets/images/heart-disease.jpg');
+  background-size: cover;
+
+}
+
+#heart-disease-grid:hover{
+
+  background-blend-mode:luminosity;
+
+}
+
+#bank-marketting-grid{
+
+  background-image: url('/assets/images/bank-marketting.jpg');
+  background-size: cover;
+
+}
+
+#bank-marketting-grid:hover{
+
+  background-blend-mode:luminosity;
+
+}
+
+#student-performance-grid{
+
+  background-image: url('/assets/images/student-performance.jpg');
+  background-size: cover;
+  background-blend-mode:hard-light;
+
+}
+
+#student-performance-grid:hover{
+
+  background-blend-mode:luminosity;
+  color: rgb(0, 0, 0);
+  transition: color 0.3s linear;
+
+}

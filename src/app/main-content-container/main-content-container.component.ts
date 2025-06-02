@@ -15,26 +15,26 @@ export class MainContentContainerComponent {
 
   ngOnInit(){
 
-    this.datasetService.sendApiTestSignal().subscribe({
+    // Send a little test signal to kick start the stack works
+    // this.datasetService.sendApiTestSignal().subscribe({
 
-      next: (apiTestResponse: unknown) => {
+    //   next: (apiTestResponse: unknown) => {
 
-        if(apiTestResponse){
+    //     if(apiTestResponse){
 
-          const response = apiTestResponse as HttpResponse<any>;
+    //       const response = apiTestResponse as HttpResponse<any>;
 
-        }
+    //     }
 
-        console.log();
 
-      },
-      error: (error: any) => {
+    //   },
+    //   error: (error: any) => {
 
-        console.log("Error", error);
+    //     console.log("Error", error);
 
-      }
+    //   }
 
-    })
+    // });
 
   }
 

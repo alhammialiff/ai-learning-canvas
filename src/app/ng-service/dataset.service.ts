@@ -25,13 +25,21 @@ export class DatasetService {
     // Create a test body
     const body = {
       message: 'Connectivity Test',
-      data: null,
+      data: {
+        dataset: "iris"
+      },
       timestamp: ''
     };
 
     // Return HTTP Post observable
+    // return this.httpClient.post(
+    //   'http://localhost:3000/api/test',
+    //   body,
+    //   { headers: httpHeaders }
+    // );
+
     return this.httpClient.post(
-      'http://localhost:3000/api/test',
+      'http://localhost:3000/api/dataset',
       body,
       { headers: httpHeaders }
     );
