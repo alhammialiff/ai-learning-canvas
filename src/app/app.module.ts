@@ -7,13 +7,15 @@ import { RootUiContainerComponent } from './root-ui-container/root-ui-container.
 import { SidenavContainerComponent } from './sidenav-container/sidenav-container.component';
 import { MainContentContainerComponent } from './main-content-container/main-content-container.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NeuralNetworkVisualCanvasComponent } from './neural-network-visual-canvas/neural-network-visual-canvas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RootUiContainerComponent,
     SidenavContainerComponent,
-    MainContentContainerComponent
+    MainContentContainerComponent,
+    NeuralNetworkVisualCanvasComponent
   ],
   imports: [
     BrowserModule,
