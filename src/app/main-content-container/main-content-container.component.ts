@@ -1,6 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { DatasetService } from './../ng-service/dataset.service';
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-main-content-container',
@@ -8,6 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-content-container.component.scss']
 })
 export class MainContentContainerComponent {
+
+  modelCreationForm: FormGroup = new FormGroup({
+    numOfLayers: new FormControl('')
+  })
 
   constructor(
     private datasetService: DatasetService

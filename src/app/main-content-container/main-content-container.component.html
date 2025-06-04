@@ -1,13 +1,13 @@
-<div class="main-content-container">
+<div class="container main-content-container mt-4">
 
   <div class="row">
     <!-- Section Title -->
     <div class="col">
-      <h3>Which dataset you want to try out?</h3>
+      <h5>Which dataset do you want to tinker on?</h5>
     </div>
   </div>
 
-  <div class="row dataset-grid">
+  <div class="row dataset-grid mb-5">
 
     <div id="iris-grid" class="grid-item">
       <div class="bg-img"></div>
@@ -37,6 +37,112 @@
   </div>
 
   <div class="row">
+    <hr>
+  </div>
+
+  <!-- Network Creation Form -->
+  <div class="row mt-3">
+    <h5>
+      Create your network
+    </h5>
+  </div>
+
+  <form class="form-group" [formGroup]="modelCreationForm">
+    <div class="row g-3 align-items-end">
+
+
+      <div class="col-1">
+
+        <label for="">
+          <p>
+            Layers
+          </p>
+        </label>
+
+        <select class="form-control form-control-sm"
+          formControlName="numOfLayers">
+          <option class="placeholder"
+             value=""
+             disabled
+             selected>
+             No. of layers
+          </option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+        </select>
+
+      </div>
+
+      <div class="col-3">
+
+        <label for="">
+          <p>
+            Activation
+          </p>
+        </label>
+
+        <select class="form-control form-control-sm"
+          formControlName="numOfLayers">
+          <option class="placeholder"
+            value=""
+            disabled
+            selected>
+            Choose your activation function
+          </option>
+          <option>Sigmoid</option>
+          <option>ReLU</option>
+        </select>
+
+      </div>
+
+      <div class="col-2">
+
+        <label for="">
+          <p>
+            Learning Rate
+          </p>
+        </label>
+
+        <input class="form-control form-control-sm" placeholder="How slow do you want it to learn?">
+
+      </div>
+
+      <div class="col-2">
+
+        <label for="">
+          <p>
+            Optimizer
+          </p>
+        </label>
+
+        <select class="form-control form-control-sm"
+          formControlName="numOfLayers">
+          <option value="" disabled selected>How do you want to reduce error/loss?</option>
+          <option>Backpropagation</option>
+          <option>Stochastic</option>
+        </select>
+
+      </div>
+    </div>
+
+  </form>
+
+  <div class="row mt-5">
+    <hr>
+  </div>
+
+  <!-- Neural Network Canvas -->
+  <div class="row mt-3">
+    <h5>How your network looks like</h5>
+  </div>
+
+  <div>
     <app-neural-network-visual-canvas></app-neural-network-visual-canvas>
   </div>
 
