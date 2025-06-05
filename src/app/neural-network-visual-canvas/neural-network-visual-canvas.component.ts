@@ -23,7 +23,7 @@ export class NeuralNetworkVisualCanvasComponent {
   neuron: any;
   svg: any;
 
-  canvasWidth: number = 1000;
+  canvasWidth: number = 800;
   canvasHeight: number = 600;
 
   layerWidth: number = this.canvasWidth/this.layers.length;
@@ -39,18 +39,17 @@ export class NeuralNetworkVisualCanvasComponent {
 
   ngAfterViewInit(){
 
-    // Set neuron position
-    this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement,
-      'position',
-      'relative');
-
     // ============================
     // Canvas foundation sizing
     // ============================
     // Debugging purposes
     this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement,
       'border',
-      '1px solid red');
+      '1px solid #d4d4d4');
+
+    this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement,
+      'background-color',
+      'white');
 
     // Width and height
     this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement,
@@ -60,12 +59,15 @@ export class NeuralNetworkVisualCanvasComponent {
       'height',
       `${this.canvasHeight}px`);
 
+    this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement,
+      'border-radius',
+      `16px`
+    )
 
 
     // ============================
     // Set neuron position based on canvas
     // ============================
-
     // (1) Iterate each layer
     this.layers.forEach((layerHeight, layerIndex)=>{
 
@@ -74,19 +76,13 @@ export class NeuralNetworkVisualCanvasComponent {
         y: number
       }[]= []
 
-      // (1) Set gap
-      const yStep = this.layerHeight/layerHeight;
-      const xStep = this.layerWidth;
-
-
-
       // (2) Use layer values to iterate each neuron position
       for(let neuronIndex = 0; neuronIndex < layerHeight; neuronIndex++){
 
         // Set neuron position
         neuronInLayerPosition.push({
-          x: layerIndex * this.layerWidth,
-          y: (neuronIndex+1) * yStep/2
+          x: (layerIndex + 1) * 130,
+          y: (neuronIndex + 1) * 50
         });
 
       }
@@ -94,119 +90,85 @@ export class NeuralNetworkVisualCanvasComponent {
       // This 2D Array store neuronPositions by layer.
       this.neuronPositions2DList.push(neuronInLayerPosition);
 
-    })
+    });
+
+    // ======================================
+    // Set the SVG container and objects for Neuron and Vertices
+    // ======================================
+    // Set Neuron SVG
+    this.svg = this.renderer.createElement('svg', 'svg');
+    this.renderer.setAttribute(this.svg,'width','800px');
+    this.renderer.setAttribute(this.svg,'height','600px');
+
+    // Set Vertice SVG
+    // This SVG takes absolute as display to enable overlay on neurons
+    const backgroundSvg = this.renderer.createElement('svg','svg');
+    this.renderer.setAttribute(backgroundSvg,'width','800px');
+    this.renderer.setAttribute(backgroundSvg,'height','600px');
+    this.renderer.setStyle(backgroundSvg,'display','absolute');
+    this.renderer.setStyle(backgroundSvg,'top','0px');
+    this.renderer.setStyle(backgroundSvg,'left','0px');
+
+    // (1) Iterate 2D array containing layers, which contains each neuron position
+    this.neuronPositions2DList.forEach((layer,layerIndex) =>{
+
+      // (2) Use layer values to iterate each neuron position
+      for(let neuronIndex = 0; neuronIndex < layer.length; neuronIndex++){
+
+        // Store current index of current layer
+        const neuronPosition = layer[neuronIndex];
+
+        // Create Neuron
+        // Note: Each circle has to be encapsulated with svg
+        const circle = this.renderer.createElement('circle','svg');
+        this.renderer.setAttribute(circle,'cx',neuronPosition.x.toString());
+        this.renderer.setAttribute(circle,'cy',neuronPosition.y.toString());
+        this.renderer.setAttribute(circle,'r','10');
+        this.renderer.setAttribute(circle,'fill','#d4d4d4');
+
+        // Append circle to Neuron SVG
+        this.renderer.appendChild(this.svg,circle);
+
+        // Check if layer is not last,
+        // Without this it'll return an error stating that the target layer is undefined
+        // This is because there is no layer after final layer
+        if(layerIndex < layer.length - 1){
+
+          // Prep next layer for line rendering
+          const nextLayer = this.neuronPositions2DList[layerIndex + 1];
+          const nextLayerLength = nextLayer.length;
+
+          // Iterate every neuron position in the next layer
+          nextLayer.forEach((neuronPosition2, layerIndex2)=> {
+
+              // Render line based on current layer's neuron pos, and next layer's neuron pos
+              const line = this.renderer.createElement('line','svg');
+              this.renderer.setAttribute(line,'x1', neuronPosition.x.toString());
+              this.renderer.setAttribute(line,'y1', neuronPosition.y.toString());
+              this.renderer.setAttribute(line,'x2', neuronPosition2.x.toString());
+              this.renderer.setAttribute(line,'y2', neuronPosition2.y.toString());
+              this.renderer.setAttribute(line, 'stroke', '#c33984');
+              this.renderer.setAttribute(line, 'stroke-width', '0.5');
+
+              // Append line into Vertice SVG
+              this.renderer.appendChild(backgroundSvg,line);
+
+            });
+
+        }
+
+      }
 
 
+    });
 
-    // Set neuron
+    // Append Canvas SVG on Canvas
+    this.renderer.appendChild(this.neuralNetworkCanvas.nativeElement, this.svg);
 
-
-
-
-
-
-
-  }
-
-  setNeuronContainerSize(svg: any){
-
-    this.renderer.setStyle(svg,'width','66px');
-    this.renderer.setStyle(svg,'height','62px');
-
-  }
-
-  // setFlexLayout(){
-
-  //   // Flex layout
-  //   this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'display', 'flex');
-  //   this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'width', '800px');
-  //   this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'height', '600px');
-  //   // this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'flex-direction', 'row');
-  //   // this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'border', 'solid 1px red');
-
-  // }
-
-  renderSvg(){
-
-    const svg = this.renderer.createElement('svg', 'svg');
-
-    return svg;
-
-  }
-
-  // renderDivRow(){
-
-  //   // <div class="row"></div>
-  //   const divRow = this.renderer.createElement('div');
-  //   this.renderer.addClass(divRow,'row');
-
-  //   return divRow;
-
-  // }
-
-  // renderDivCol(){
-
-  //   // <div class="col"></div>
-  //   const divCol = this.renderer.createElement('div');
-  //   this.renderer.addClass(divCol,'col');
-  //   // this.renderer.setStyle(divCol,'border','1px solid red');
-
-  //   return divCol;
-
-  // }
-
-  renderNeuron(pos: any){
-
-    // // <div class="row"></div>
-    // const divRow = this.renderer.createElement('div');
-    // this.renderer.addClass(divRow,'row');
-
-    // // <div class="col"></div>
-    // const divCol = this.renderer.createElement('div');
-    // this.renderer.addClass(divRow,'col');
-
-    // Create neuron <circle cx="50" cy="50" r="2vw" stroke="black" stroke-width="1" fill="lightblue" />
-    const circle = this.renderer.createElement('circle', 'svg');
-    this.renderer.setAttribute(circle, 'cx', '50');
-    this.renderer.setAttribute(circle, 'cy', '50');
-    this.renderer.setAttribute(circle, 'r', '10px');
-
-    this.renderer.setStyle(circle, 'position', 'absolute');
-    this.renderer.setStyle(circle, 'top', pos.x);
-    this.renderer.setStyle(circle, 'left', pos.y);
-    this.renderer.setAttribute(circle, 'stroke', 'black');
-    this.renderer.setAttribute(circle, 'stroke-width', '0');
-    this.renderer.setAttribute(circle, 'fill', '#3b3f87');
-
-    return circle;
+    // Append Neuron SVG on Canvas SVG
+    this.renderer.appendChild(this.svg, backgroundSvg);
 
   }
 
-  getNeuronCoordinates(svgNeuronContainer: any): {
-    x: number,
-    y: number
-  }{
-
-    const rect = svgNeuronContainer.getBoundingClientRect();
-
-    const x = rect.left + (rect.width/2);
-    const y = rect.top + (rect.height/2);
-
-    return { x: x , y: y };
-
-  }
-
-  pushNeuronCoordinates(neuronPos: { x: number, y: number },
-    layerIndex:number, neuronIndex:number){
-
-    if(!this.neuronPositions2DList[layerIndex]){
-
-      this.neuronPositions2DList[layerIndex] = [];
-
-    }
-
-    this.neuronPositions2DList[layerIndex][neuronIndex] = neuronPos;
-
-  }
 
 }
