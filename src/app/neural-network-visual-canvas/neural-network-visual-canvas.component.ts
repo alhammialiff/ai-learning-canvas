@@ -14,10 +14,22 @@ export class NeuralNetworkVisualCanvasComponent {
   // Network Map Prototyping
   layers = [8,10,10,10,4];
   layerLength: number = 0;
-  neuronPositions: {
+  neuronPositions2DList: {
     x: number,
     y: number
   }[][] = []
+
+
+  neuron: any;
+  svg: any;
+
+  canvasWidth: number = 1000;
+  canvasHeight: number = 600;
+
+  layerWidth: number = this.canvasWidth/this.layers.length;
+
+  // A necessary repeat to get the dimensional logic right
+  layerHeight: number = this.canvasHeight;
 
   ngOnInit(){
 
@@ -27,122 +39,68 @@ export class NeuralNetworkVisualCanvasComponent {
 
   ngAfterViewInit(){
 
-    this.setFlexLayout();
+    // Set neuron position
+    this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement,
+      'position',
+      'relative');
 
-    this.layers.forEach((neurons, layerIndex) => {
+    // ============================
+    // Canvas foundation sizing
+    // ============================
+    // Debugging purposes
+    this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement,
+      'border',
+      '1px solid red');
 
-      const divRow = this.renderDivRow();
-      this.renderer.appendChild(this.neuralNetworkCanvas.nativeElement, divRow);
-
-      for(let n = 0; n < neurons; n++){
-
-        // this.renderNeuronInColumn();
-        const divCol = this.renderDivCol();
-        this.renderer.appendChild(divRow,divCol);
-
-        const svg = this.renderSvg();
-        const neuron = this.renderNeuron();
+    // Width and height
+    this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement,
+      'width',
+      `${this.canvasWidth}px`);
+    this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement,
+      'height',
+      `${this.canvasHeight}px`);
 
 
-        this.renderer.appendChild(svg, neuron);
-        this.renderer.appendChild(divCol, svg);
-        this.setNeuronContainerSize(svg);
 
-        // const neuronPos = this.getNeuronCoordinates(svg);
-        // this.pushNeuronCoordinates(neuronPos, layerIndex, n)
-        // ;
+    // ============================
+    // Set neuron position based on canvas
+    // ============================
 
-        const width = 800;
-        const height = 600;
-        const layerCount = this.layers.length;
-        const xStep = width / (layerCount + 1);
+    // (1) Iterate each layer
+    this.layers.forEach((layerHeight, layerIndex)=>{
 
-        this.layers.forEach((neurons, layerIndex) => {
+      var neuronInLayerPosition: {
+        x: number,
+        y: number
+      }[]= []
 
-          const yStep = height / (neurons + 1);
-          const layerPositions: { x: number, y: number }[] = [];
+      // (1) Set gap
+      const yStep = this.layerHeight/layerHeight;
+      const xStep = this.layerWidth;
 
-          for (let n = 0; n < neurons; n++) {
-            const x = xStep * (layerIndex + 1);
-            const y = yStep * (n + 1);
-            layerPositions.push({ x, y });
-          }
 
-          this.neuronPositions.push(layerPositions);
 
+      // (2) Use layer values to iterate each neuron position
+      for(let neuronIndex = 0; neuronIndex < layerHeight; neuronIndex++){
+
+        // Set neuron position
+        neuronInLayerPosition.push({
+          x: layerIndex * this.layerWidth,
+          y: (neuronIndex+1) * yStep/2
         });
 
       }
 
-    });
+      // This 2D Array store neuronPositions by layer.
+      this.neuronPositions2DList.push(neuronInLayerPosition);
 
-    setTimeout(()=>{
+    })
 
-      // Create a background svg for the lines
-      const backgroundSvg = this.renderer.createElement('svg','svg');
-      this.renderer.setAttribute(backgroundSvg, 'width', '800');
-      this.renderer.setAttribute(backgroundSvg, 'height', '600');
-      this.renderer.setStyle(backgroundSvg, 'position', 'absolute');
-      this.renderer.setStyle(backgroundSvg, 'top', '0');
-      this.renderer.setStyle(backgroundSvg, 'left', '0');
-      this.renderer.setStyle(backgroundSvg, 'z-index', '0');
 
-      this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'position', 'relative');
 
-      this.neuronPositions.forEach((layer, i) => {
+    // Set neuron
 
-        const layerA = layer;
-        var layerB: any[] = [];
-        var layerBLength = null;
-        if(this.neuronPositions[i+1]){
 
-          layerB = this.neuronPositions[i + 1];
-          layerBLength = layerB.length;
-
-        }
-
-        var counterA = 0;
-
-        if(i < this.neuronPositions.length - 1){
-
-          while(counterA < layerA.length){
-
-            layerB.forEach((inputNeuronPos, j)=>{
-
-              const line = this.renderer.createElement('line','svg');
-
-              this.renderer.setAttribute(line, 'x1', layerA[counterA].x.toString());
-              this.renderer.setAttribute(line, 'y1', layerA[counterA].y.toString());
-
-              this.renderer.setAttribute(line, 'x2', layerB[j].x.toString());
-              this.renderer.setAttribute(line, 'y2', layerB[j].y.toString());
-
-              this.renderer.setAttribute(line, 'stroke', '#919191');
-              this.renderer.setAttribute(line, 'stroke-width', '0.1');
-
-              this.renderer.appendChild(backgroundSvg, line);
-
-            });
-
-            counterA++;
-
-          }
-
-        }
-
-      });
-
-      console.log("[Neuron Coordinates] neuronPositions - ", this.neuronPositions);
-
-      this.renderer.insertBefore(
-        this.neuralNetworkCanvas.nativeElement,
-        backgroundSvg,
-        this.neuralNetworkCanvas.nativeElement.firstChild
-      );
-
-      // this.renderer.appendChild(this.neuralNetworkCanvas.nativeElement,backgroundSvg);
-
-    },1)
 
 
 
@@ -157,15 +115,16 @@ export class NeuralNetworkVisualCanvasComponent {
 
   }
 
-  setFlexLayout(){
+  // setFlexLayout(){
 
-    // Flex layout
-    this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'display', 'flex');
-    this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'max-width', '800px');
-    this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'flex-direction', 'row');
-    // this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'border', 'solid 1px red');
+  //   // Flex layout
+  //   this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'display', 'flex');
+  //   this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'width', '800px');
+  //   this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'height', '600px');
+  //   // this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'flex-direction', 'row');
+  //   // this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement, 'border', 'solid 1px red');
 
-  }
+  // }
 
   renderSvg(){
 
@@ -175,28 +134,28 @@ export class NeuralNetworkVisualCanvasComponent {
 
   }
 
-  renderDivRow(){
+  // renderDivRow(){
 
-    // <div class="row"></div>
-    const divRow = this.renderer.createElement('div');
-    this.renderer.addClass(divRow,'row');
+  //   // <div class="row"></div>
+  //   const divRow = this.renderer.createElement('div');
+  //   this.renderer.addClass(divRow,'row');
 
-    return divRow;
+  //   return divRow;
 
-  }
+  // }
 
-  renderDivCol(){
+  // renderDivCol(){
 
-    // <div class="col"></div>
-    const divCol = this.renderer.createElement('div');
-    this.renderer.addClass(divCol,'col');
-    // this.renderer.setStyle(divCol,'border','1px solid red');
+  //   // <div class="col"></div>
+  //   const divCol = this.renderer.createElement('div');
+  //   this.renderer.addClass(divCol,'col');
+  //   // this.renderer.setStyle(divCol,'border','1px solid red');
 
-    return divCol;
+  //   return divCol;
 
-  }
+  // }
 
-  renderNeuron(){
+  renderNeuron(pos: any){
 
     // // <div class="row"></div>
     // const divRow = this.renderer.createElement('div');
@@ -211,6 +170,10 @@ export class NeuralNetworkVisualCanvasComponent {
     this.renderer.setAttribute(circle, 'cx', '50');
     this.renderer.setAttribute(circle, 'cy', '50');
     this.renderer.setAttribute(circle, 'r', '10px');
+
+    this.renderer.setStyle(circle, 'position', 'absolute');
+    this.renderer.setStyle(circle, 'top', pos.x);
+    this.renderer.setStyle(circle, 'left', pos.y);
     this.renderer.setAttribute(circle, 'stroke', 'black');
     this.renderer.setAttribute(circle, 'stroke-width', '0');
     this.renderer.setAttribute(circle, 'fill', '#3b3f87');
@@ -236,13 +199,13 @@ export class NeuralNetworkVisualCanvasComponent {
   pushNeuronCoordinates(neuronPos: { x: number, y: number },
     layerIndex:number, neuronIndex:number){
 
-    if(!this.neuronPositions[layerIndex]){
+    if(!this.neuronPositions2DList[layerIndex]){
 
-      this.neuronPositions[layerIndex] = [];
+      this.neuronPositions2DList[layerIndex] = [];
 
     }
 
-    this.neuronPositions[layerIndex][neuronIndex] = neuronPos;
+    this.neuronPositions2DList[layerIndex][neuronIndex] = neuronPos;
 
   }
 
