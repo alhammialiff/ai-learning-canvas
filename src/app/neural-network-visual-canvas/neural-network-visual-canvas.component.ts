@@ -12,7 +12,7 @@ export class NeuralNetworkVisualCanvasComponent {
   constructor(private renderer: Renderer2){}
 
   // Network Map Prototyping
-  layers = [8,10,10,10,4];
+  layers = [10,10,10,10,10, 3];
   layerLength: number = 0;
   neuronPositions2DList: {
     x: number,

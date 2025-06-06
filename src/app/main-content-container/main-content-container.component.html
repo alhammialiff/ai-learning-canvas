@@ -140,11 +140,62 @@
 
   <!-- Neural Network Canvas -->
   <div class="row my-4">
+
     <h5>How your network looks like</h5>
   </div>
 
-  <div>
-    <app-neural-network-visual-canvas></app-neural-network-visual-canvas>
+  <div class="row">
+    <div class="col">
+      <app-neural-network-visual-canvas></app-neural-network-visual-canvas>
+    </div>
+    <div class="col">
+      <form [formGroup]="layerShapeForm" class="form-group">
+
+        <div class="row">
+          <div class="col-3">
+            <label for="">Input Layer</label>
+            <input class="form-control"
+              formControlName="inputLayer"
+              type="text" />
+          </div>
+        </div>
+        <hr>
+
+        <div class="row">
+          <div class="col">
+            <label for="">Hidden Layers</label>
+          </div>
+        </div>
+
+        <div *ngFor="let control of hiddenLayer.controls; let i = index" class="row mb-1">
+
+          <div class="col-3">
+              <div class="col">
+                <input class="form-control"
+                  [formControlName]="i"
+                  placeholder="Layer {{i+1}}"
+                  type="text" />
+              </div>
+          </div>
+
+          <div class="col d-flex align-items-end">
+            <button class="custom-button" (click)="addHiddenLayerFormControl()">+</button>
+          </div>
+
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col">
+            <label for="">Output Layers</label>
+            <input class="form-control"
+              formControlName="outputLayer"
+              type="text" />
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 
 </div>
