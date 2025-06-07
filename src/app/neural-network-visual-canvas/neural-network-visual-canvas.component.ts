@@ -1,3 +1,4 @@
+import { DeepLearningService } from './../ng-service/deep-learning.service';
 import { Component, Renderer2, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
@@ -9,10 +10,12 @@ export class NeuralNetworkVisualCanvasComponent {
 
   @ViewChild('neuralNetworkCanvas') neuralNetworkCanvas!: ElementRef;
 
-  constructor(private renderer: Renderer2){}
+  constructor(private renderer: Renderer2,
+    private deepLearningService: DeepLearningService
+  ){}
 
   // Network Map Prototyping
-  layers = [10,10,10,10,10, 3];
+  layers: any[] = [];
   layerLength: number = 0;
   neuronPositions2DList: {
     x: number,
@@ -33,11 +36,45 @@ export class NeuralNetworkVisualCanvasComponent {
 
   ngOnInit(){
 
-    this.layerLength = this.layers.length;
+    this.deepLearningService.emitLayerShape.subscribe({
+
+      next: (inputShape: any) => {
+
+        if(inputShape.length > 0){
+
+          this.layers = [...inputShape]
+          this.layerLength = this.layers.length;
+          this.drawNetwork();
+
+        }
+
+      },
+      error: (error: any) => {
+
+      }
+
+    });
 
   }
 
   ngAfterViewInit(){
+
+    this.drawNetwork();
+
+  }
+
+  drawNetwork(){
+
+    this.neuronPositions2DList = [];
+
+    // Reset network on every render
+    // Why? Every user input is emitted via Behavior Subject
+    //      Behavior Subject drives change detection
+    if (this.neuralNetworkCanvas && this.neuralNetworkCanvas.nativeElement) {
+
+      this.neuralNetworkCanvas.nativeElement.innerHTML = '';
+
+    }
 
     // ============================
     // Canvas foundation sizing
@@ -55,6 +92,7 @@ export class NeuralNetworkVisualCanvasComponent {
     this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement,
       'width',
       `${this.canvasWidth}px`);
+
     this.renderer.setStyle(this.neuralNetworkCanvas.nativeElement,
       'height',
       `${this.canvasHeight}px`);
@@ -81,7 +119,7 @@ export class NeuralNetworkVisualCanvasComponent {
 
         // Set neuron position
         neuronInLayerPosition.push({
-          x: (layerIndex + 1) * 130,
+          x: (layerIndex + 1) * 100,
           y: (neuronIndex + 1) * 50
         });
 
@@ -132,7 +170,7 @@ export class NeuralNetworkVisualCanvasComponent {
         // Check if layer is not last,
         // Without this it'll return an error stating that the target layer is undefined
         // This is because there is no layer after final layer
-        if(layerIndex < layer.length - 1){
+        if(layerIndex < this.neuronPositions2DList.length - 1){
 
           // Prep next layer for line rendering
           const nextLayer = this.neuronPositions2DList[layerIndex + 1];
@@ -153,7 +191,7 @@ export class NeuralNetworkVisualCanvasComponent {
               // Append line into Vertice SVG
               this.renderer.appendChild(backgroundSvg,line);
 
-            });
+          });
 
         }
 
@@ -169,6 +207,5 @@ export class NeuralNetworkVisualCanvasComponent {
     this.renderer.appendChild(this.svg, backgroundSvg);
 
   }
-
 
 }

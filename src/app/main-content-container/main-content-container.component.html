@@ -148,6 +148,8 @@
     <div class="col">
       <app-neural-network-visual-canvas></app-neural-network-visual-canvas>
     </div>
+
+    <!-- Layer Shape Form -->
     <div class="col">
       <form [formGroup]="layerShapeForm" class="form-group">
 
@@ -156,7 +158,7 @@
             <label for="">Input Layer</label>
             <input class="form-control"
               formControlName="inputLayer"
-              type="text" />
+              type="number" />
           </div>
         </div>
         <hr>
@@ -167,31 +169,36 @@
           </div>
         </div>
 
-        <div *ngFor="let control of hiddenLayer.controls; let i = index" class="row mb-1">
+        <ng-container formArrayName="hiddenLayer">
+          <div *ngFor="let control of hiddenLayer.controls; let i = index" class="row mb-1">
 
-          <div class="col-3">
-              <div class="col">
-                <input class="form-control"
-                  [formControlName]="i"
-                  placeholder="Layer {{i+1}}"
-                  type="text" />
-              </div>
+            <div class="col-3">
+                <div class="col">
+                  <input class="form-control"
+                    [formControlName]="i"
+                    placeholder="Layer {{i+1}}"
+                    type="number" />
+                </div>
+            </div>
+
+            <div class="col d-flex align-items-end">
+              <button class="custom-button" (click)="addHiddenLayerFormControl()">+</button>
+            </div>
+
           </div>
-
-          <div class="col d-flex align-items-end">
-            <button class="custom-button" (click)="addHiddenLayerFormControl()">+</button>
-          </div>
-
-        </div>
+        </ng-container>
 
         <hr>
-
         <div class="row">
           <div class="col">
             <label for="">Output Layers</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
             <input class="form-control"
               formControlName="outputLayer"
-              type="text" />
+              type="number" />
           </div>
         </div>
       </form>
