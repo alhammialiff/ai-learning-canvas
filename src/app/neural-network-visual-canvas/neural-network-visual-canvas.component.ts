@@ -26,6 +26,8 @@ export class NeuralNetworkVisualCanvasComponent {
   neuron: any;
   svg: any;
 
+  // TODO: Generalise multiples to accomodate for different
+  //       viewports (web and mobile for a start)
   canvasWidth: number = 800;
   canvasHeight: number = 600;
 
@@ -118,6 +120,8 @@ export class NeuralNetworkVisualCanvasComponent {
       for(let neuronIndex = 0; neuronIndex < layerHeight; neuronIndex++){
 
         // Set neuron position
+        // TODO: Generalise multiples to accomodate for different
+        //       viewports (web and mobile for a start)
         neuronInLayerPosition.push({
           x: (layerIndex + 1) * 100,
           y: (neuronIndex + 1) * 50
