@@ -1,9 +1,10 @@
 import { DeepLearningService } from './../ng-service/deep-learning.service';
 import { HttpResponse } from '@angular/common/http';
 import { DatasetService } from './../ng-service/dataset.service';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, map } from 'rxjs';
+import { BreakpointObserverService } from '../ng-service/breakpoint-observer.service';
 
 @Component({
   selector: 'app-main-content-container',
@@ -11,6 +12,13 @@ import { BehaviorSubject, map } from 'rxjs';
   styleUrls: ['./main-content-container.component.scss']
 })
 export class MainContentContainerComponent {
+
+  // @ViewChild('mainContentContainer') mainContentContainer!: ElementRef;
+  // Width and Height including scrollbar excluding toolbar
+  viewportWidth = window.innerWidth;
+  viewportHeight = window.innerHeight;
+
+  containerMarginLeft = '0px';
 
   modelCreationForm: FormGroup = new FormGroup({
     numOfLayers: new FormControl('')
@@ -28,7 +36,10 @@ export class MainContentContainerComponent {
 
   constructor(
     private datasetService: DatasetService,
-    private deepLearningService: DeepLearningService
+    private deepLearningService: DeepLearningService,
+    // private breakpointObserverService: BreakpointObserverService,
+    // private renderer: Renderer2,
+    // private changeDetectorRef: ChangeDetectorRef
   ){}
 
   ngOnInit(){

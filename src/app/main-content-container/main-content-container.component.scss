@@ -3,7 +3,6 @@
   margin-left: 25px;
   // padding: 1.5rem;
 
-
 }
 
 hr{
@@ -142,5 +141,146 @@ h5{
   height: 38px;
   border: 1px solid #d4d4d4;
   border-radius: 8px;
+
+}
+
+
+// =====================================================
+// SM
+@media (min-width: 	576px) and (max-width: 767.98px) {
+
+}
+
+// =====================================================
+// MD
+@media (min-width: 	768px) and (max-width: 991.98px) {
+
+}
+
+// =====================================================
+// LG (1st Quarter)
+@media (min-width:  992px) and (max-width: 1050px) {
+
+  .main-content-container{
+
+    margin-left: 200px;
+
+  }
+
+  .custom-button{
+
+    margin-left: 30px;
+
+  }
+
+
+}
+
+// LG (2nd Quarter)
+@media (min-width:  1051px) and (max-width: 1100px) {
+
+  .main-content-container{
+
+    margin-left: 180px;
+
+  }
+
+  .custom-button{
+
+    margin-left: 30px;
+
+  }
+
+
+}
+
+// LG (3rd Quarter)
+@media (min-width:  1101px) and (max-width: 1150px) {
+
+  .main-content-container{
+
+    margin-left: 140px;
+
+  }
+
+  .custom-button{
+
+    margin-left: 30px;
+
+  }
+
+
+}
+
+// LG (4th Quarter)
+@media (min-width: 1151px) and (max-width: 1199.98px) {
+
+  .main-content-container{
+
+    margin-left: 120px;
+
+  }
+
+  .custom-button{
+
+    margin-left: 30px;
+
+  }
+
+
+}
+// =====================================================
+
+// XL (Lower)
+@media (min-width: 	1200px) and (max-width: 1299.98px) {
+
+  .main-content-container{
+
+    margin-left: 180px;
+
+  }
+
+  .custom-button{
+
+    margin-left: 30px;
+
+  }
+
+}
+
+// XL (Upper)
+@media (min-width: 	1300px) and (max-width: 1399.98px) {
+
+  .main-content-container{
+
+    margin-left: 150px;
+
+  }
+
+  .custom-button{
+
+    margin-left: 30px;
+
+  }
+
+}
+// =====================================================
+
+// XXL
+@media (min-width: 1400px) {
+
+  .main-content-container{
+
+    margin-left: 180px;
+
+  }
+
+
+
+}
+
+input.form-control{
+
+  width: 96px;
 
 }

@@ -11,6 +11,8 @@ export class BreakpointObserverService {
     private breakpointObserver: BreakpointObserver
   ) { }
 
+  // Note: These breakpoints are angular's, not bootstrap
+  //       To KIV this service until there is a need to deviate from bootstrap's breakpoints
   BREAKPOINTS = {
     XS:'(max-width: 575px)',
     SM:'(min-width: 576px) and (max-width: 767px)',
@@ -35,6 +37,5 @@ export class BreakpointObserverService {
       ]);
 
   }
-
 
 }
