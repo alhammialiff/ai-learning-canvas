@@ -1,16 +1,62 @@
-<div class="sidenav-container">
+
+<div
+  [ngClass]="isOpen ? 'drawer-button-open' : 'drawer-button-close'"
+  (click)="toggleSidenav()">
+  <span class="material-symbols-outlined">
+    menu
+  </span>
+</div>
+
+<div [class.sidenav-container-open]="isOpen"
+  [class.sidenav-container-close]="!isOpen">
 
   <div class="logo">
-    <p>doo<span style="color:rgb(42, 110, 59); text-decoration: underline;">dl</span>er.<span style="color:rgb(42, 110, 59);">i</span><span style="color:rgb(42, 110, 59);">o</span></p>
+    <ng-container *ngIf="isOpen;else closedLogo">
+      <p>doo<span style="color:rgb(42, 110, 59); text-decoration: underline;">dl</span>er.<span style="color:rgb(42, 110, 59);">i</span><span style="color:rgb(42, 110, 59);">o</span></p>
+    </ng-container>
+    <ng-template #closedLogo>
+      <p><span style="color:rgb(42, 110, 59); text-decoration: underline;">dl</span>.<span style="color:rgb(42, 110, 59);">i</span><span style="color:rgb(42, 110, 59);">o</span></p>
+    </ng-template>
   </div>
 
+
   <ul>
-    <li routerLink="/dashboard">Dashboard</li>
-    <li routerLink="/models">Models</li>
-    <li routerLink="/train">Train Model</li>
-    <li routerLink="/test">Test/Use Model</li>
-    <li routerLink="/history">History</li>
-    <li routerLink="/settings">Settings</li>
-    <li routerLink="/help">Help</li>
+    <li routerLink="/dashboard">
+      <span class="material-symbols-outlined">
+        home
+      </span>
+      <span [class.display-element]="isOpen"
+        [class.hide-element]="!isOpen">Home</span>
+    </li>
+    <li routerLink="/dashboard">
+      <span class="material-symbols-outlined">
+        model_training
+      </span>
+      <span  [class.display-element]="isOpen"
+        [class.hide-element]="!isOpen">Training</span>
+    </li>
+    <li routerLink="/test">
+      <span class="material-symbols-outlined">
+        compare
+      </span>
+      <span  [class.display-element]="isOpen"
+        [class.hide-element]="!isOpen">Test/Predict</span>
+    </li>
+    <li routerLink="/models">
+      <span class="material-symbols-outlined">
+        schema
+      </span>
+      <span  [class.display-element]="isOpen"
+        [class.hide-element]="!isOpen">Your Models</span>
+    </li>
+    <li routerLink="/help">
+      <span class="material-symbols-outlined">
+        help
+      </span>
+      <span [class.display-element]="isOpen"
+        [class.hide-element]="!isOpen">Help</span>
+    </li>
   </ul>
+
 </div>
+
