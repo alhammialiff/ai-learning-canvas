@@ -47,8 +47,8 @@ export class SidenavContainerComponent {
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    // Auto close when vw is less than 992
-    if(width < 992){
+    // Auto close when vw is less than 1200
+    if(width < 1200){
 
       if(this.isOpen){
 
@@ -56,7 +56,7 @@ export class SidenavContainerComponent {
 
       }
 
-    // Auto open when vw is more than 992
+    // Auto open when vw is more than 1200
     }else{
 
       if(!this.isOpen){

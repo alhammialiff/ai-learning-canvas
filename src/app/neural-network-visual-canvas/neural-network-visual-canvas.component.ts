@@ -1,7 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { BreakpointObserverService } from './../ng-service/breakpoint-observer.service';
 import { DeepLearningService } from './../ng-service/deep-learning.service';
-import { Component, Renderer2, ElementRef, ViewChild } from '@angular/core';
+import { Component, Renderer2, ElementRef, ViewChild, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-neural-network-visual-canvas',
@@ -64,66 +64,33 @@ export class NeuralNetworkVisualCanvasComponent {
 
   ngAfterViewInit(){
 
-    // [PLACEHOLDER FOR ANGULAR-BREAKPOINT BASED STYLE CHANGE IF I NEED IT]
-    // this.breakpointObserverService.observeBreakpoint().subscribe({
-    //   next: (viewportListener: any) => {
 
-    //     if(!viewportListener){
-    //       return;
-    //     }
+    this.drawNetwork();
 
-    //     switch(viewportListener){
+  }
 
-    //       case '(max-width: 575px)':
+  // Resize NN Canvas according to current inner viewport width
+  @HostListener('window:resize', ['$event'])
+  onResize(){
 
-    //         this.canvasWidth = 800;
-    //         this.canvasHeight = 600;
+    const width = window.innerWidth;
 
-    //         break;
-
-    //       case '(min-width: 576px) and (max-width: 767px)':
-    //         this.canvasWidth = 800;
-    //         this.canvasHeight = 600;
-
-    //         break;
-    //       case '(min-width: 768px) and (max-width: 991px)':
-    //         this.canvasWidth = 800;
-    //         this.canvasHeight = 600;
-
-    //         break;
-    //       case '(min-width: 992px) and (max-width: 1199px)':
-    //         this.canvasWidth = 800;
-    //         this.canvasHeight = 600;
-
-    //         break;
-    //       case '(min-width: 1200px) and (max-width: 1919px)':
-    //         this.canvasWidth = 800;
-    //         this.canvasHeight = 600;
-
-    //         break;
-    //       case '(min-width: 1920px) and (max-width: 2559px)':
-    //         this.canvasWidth = 800;
-    //         this.canvasHeight = 600;
-
-    //         break;
-    //       case '(min-width: 2560)':
-    //         this.canvasWidth = 800;
-    //         this.canvasHeight = 600;
-
-    //         break;
-    //       default:
-
-
-
-
-    //     }
-
-
-    //   },
-    //   error: () => {
-
-    //   },
-    // })
+    if (width < 576) { // xs
+      this.canvasWidth = 320;
+      this.canvasHeight = 240;
+    } else if (width >= 576 && width < 768) { // sm
+      this.canvasWidth = 480;
+      this.canvasHeight = 320;
+    } else if (width >= 768 && width < 992) { // md
+      this.canvasWidth = 600;
+      this.canvasHeight = 400;
+    } else if (width >= 992 && width < 1200) { // lg
+      this.canvasWidth = 700;
+      this.canvasHeight = 600;
+    } else { // xxl and above
+      this.canvasWidth = 700;
+      this.canvasHeight = 600;
+    }
 
     this.drawNetwork();
 

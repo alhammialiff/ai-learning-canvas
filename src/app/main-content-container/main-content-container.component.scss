@@ -144,10 +144,11 @@ h5{
 
 }
 
-
 // =====================================================
 // SM
 @media (min-width: 	576px) and (max-width: 767.98px) {
+
+  //TODO
 
 }
 
@@ -155,11 +156,68 @@ h5{
 // MD
 @media (min-width: 	768px) and (max-width: 991.98px) {
 
+  .container{
+
+    max-width: 991.98px;
+
+  }
+
+  .dataset-grid {
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .grid-item {
+
+    margin: 10px;
+
+  }
+
+  .jumbotron{
+    width: 100%;
+    padding: 20px;
+    // border: 1px solid;
+    background-color:rgb(159, 181, 159);
+    // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
+
+  }
+
+  .jumbotron-header{
+
+    margin-top: 100px;
+
+    h2{
+      font-size: 3rem;
+      color:#f2f2f2;
+    }
+
+  }
+
+  .jumbotron-paragraph{
+
+    margin-bottom: 100px;
+
+    p{
+      font-size: 1.2rem;
+    }
+
+  }
+
 }
 
 // =====================================================
 // LG (1st Quarter)
-@media (min-width:  992px) and (max-width: 1050px) {
+@media (min-width: 992px) and (max-width: 1050px) {
+
+  .container{
+
+    width: 900px;
+
+  }
 
   .main-content-container{
 
@@ -173,21 +231,87 @@ h5{
 
   }
 
+  .jumbotron{
+
+    padding: 20px;
+    // border: 1px solid;
+    background-color:rgb(159, 181, 159);
+    // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
+
+  }
+
+  .jumbotron-header{
+
+    margin-top: 100px;
+
+    h2{
+      font-size: 3rem;
+      color:#f2f2f2;
+    }
+
+  }
+
+  .jumbotron-paragraph{
+
+    margin-bottom: 100px;
+
+    p{
+      font-size: 1.2rem;
+    }
+
+  }
+
 
 }
 
 // LG (2nd Quarter)
 @media (min-width:  1051px) and (max-width: 1100px) {
 
+  .container{
+
+    width: 900px;
+
+  }
+
   .main-content-container{
 
-    margin-left: 180px;
+    margin-left: 80px;
+
 
   }
 
   .custom-button{
 
     margin-left: 30px;
+
+  }
+
+
+  .jumbotron{
+
+    padding: 20px;
+    background-color:rgb(159, 181, 159);
+
+  }
+
+  .jumbotron-header{
+
+    margin-top: 100px;
+
+    h2{
+      font-size: 3rem;
+      color:#f2f2f2;
+    }
+
+  }
+
+  .jumbotron-paragraph{
+
+    margin-bottom: 100px;
+
+    p{
+      font-size: 1.2rem;
+    }
 
   }
 
@@ -197,15 +321,52 @@ h5{
 // LG (3rd Quarter)
 @media (min-width:  1101px) and (max-width: 1150px) {
 
+  .container{
+
+    width: 900px;
+
+  }
+
   .main-content-container{
 
-    margin-left: 140px;
+    margin-left: 10px;
 
   }
 
   .custom-button{
 
     margin-left: 30px;
+
+  }
+
+
+  .jumbotron{
+
+    padding: 20px;
+    // border: 1px solid;
+    background-color:rgb(159, 181, 159);
+    // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
+
+  }
+
+  .jumbotron-header{
+
+    margin-top: 100px;
+
+    h2{
+      font-size: 3rem;
+      color:#f2f2f2;
+    }
+
+  }
+
+  .jumbotron-paragraph{
+
+    margin-bottom: 100px;
+
+    p{
+      font-size: 1.2rem;
+    }
 
   }
 
@@ -215,9 +376,15 @@ h5{
 // LG (4th Quarter)
 @media (min-width: 1151px) and (max-width: 1199.98px) {
 
+  .container{
+
+    width: 900px;
+
+  }
+
   .main-content-container{
 
-    margin-left: 120px;
+    margin-left: 10px;
 
   }
 
@@ -227,12 +394,49 @@ h5{
 
   }
 
+  .jumbotron{
+
+    padding: 20px;
+    // border: 1px solid;
+    background-color:rgb(159, 181, 159);
+    // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
+
+  }
+
+  .jumbotron-header{
+
+    margin-top: 100px;
+
+    h2{
+      font-size: 3rem;
+      color:#f2f2f2;
+    }
+
+  }
+
+  .jumbotron-paragraph{
+
+    margin-bottom: 100px;
+
+    p{
+      font-size: 1.2rem;
+    }
+
+  }
+
 
 }
 // =====================================================
 
+// =====================================================
 // XL (Lower)
 @media (min-width: 	1200px) and (max-width: 1299.98px) {
+
+  .container{
+
+    width: 900px;
+
+  }
 
   .main-content-container{
 
@@ -243,6 +447,36 @@ h5{
   .custom-button{
 
     margin-left: 30px;
+
+  }
+
+  .jumbotron{
+
+    padding: 20px;
+    // border: 1px solid;
+    background-color:rgb(159, 181, 159);
+    // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
+
+  }
+
+  .jumbotron-header{
+
+    margin-top: 100px;
+
+    h2{
+      font-size: 3rem;
+      color:#f2f2f2;
+    }
+
+  }
+
+  .jumbotron-paragraph{
+
+    margin-bottom: 100px;
+
+    p{
+      font-size: 1.2rem;
+    }
 
   }
 
@@ -263,11 +497,48 @@ h5{
 
   }
 
+  .jumbotron{
+
+    padding: 20px;
+    // border: 1px solid;
+    background-color:rgb(159, 181, 159);
+    // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
+
+  }
+
+  .jumbotron-header{
+
+    margin-top: 100px;
+
+    h2{
+      font-size: 3rem;
+      color:#f2f2f2;
+    }
+
+  }
+
+  .jumbotron-paragraph{
+
+    margin-bottom: 100px;
+
+    p{
+      font-size: 1.2rem;
+    }
+
+  }
+
 }
 // =====================================================
 
+// =====================================================
 // XXL
 @media (min-width: 1400px) {
+
+  .container{
+
+    width: 1100px;
+
+  }
 
   .main-content-container{
 
@@ -308,6 +579,7 @@ h5{
 
 
 }
+// =====================================================
 
 input.form-control{
 

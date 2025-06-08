@@ -1,5 +1,6 @@
 <div #mainContentContainer
-  class="container main-content-container">
+  class="container
+    main-content-container">
 
   <div class="row jumbotron mb-4">
     <div class="col-12">
@@ -50,73 +51,6 @@
 
   </div>
 
-  <div class="row">
-    <hr>
-  </div>
-
-  <!-- Network Creation Form -->
-  <div class="row my-4">
-    <h5>
-      Create your network
-    </h5>
-  </div>
-
-  <form class="form-group" [formGroup]="modelCreationForm">
-    <div class="row g-3 align-items-end">
-
-      <div class="col-auto">
-
-        <label for="">
-          <p>
-            Activation
-          </p>
-        </label>
-
-        <select class="form-select"
-          formControlName="numOfLayers">
-          <option class="placeholder"
-            value=""
-            disabled
-            selected>
-            Choose your activation function
-          </option>
-          <option>Sigmoid</option>
-          <option>ReLU</option>
-        </select>
-
-      </div>
-
-      <div class="col-auto">
-
-        <label for="">
-          <p>
-            Learning Rate
-          </p>
-        </label>
-
-        <input class="form-control" placeholder="0.015">
-
-      </div>
-
-      <div class="col-auto">
-
-        <label for="">
-          <p>
-            Optimizer
-          </p>
-        </label>
-
-        <select class="form-select"
-          formControlName="numOfLayers">
-          <option>Backpropagation</option>
-          <option>Stochastic</option>
-        </select>
-
-      </div>
-    </div>
-
-  </form>
-
   <div class="row mt-5">
     <hr>
   </div>
@@ -133,11 +67,14 @@
     </div>
 
     <!-- Layer Shape Form -->
-    <div class="col mt-lg-3">
-      <form [formGroup]="layerShapeForm" class="form-group">
+    <div class="col
+      mt-lg-3
+      mt-md-3">
+      <form [formGroup]="layerShapeForm" class="form-group layer-shape-form">
         <h5>
           <strong>Scaffold Your Network</strong>
         </h5>
+
         <div class="row">
           <label for="">Input Layer</label>
         </div>
@@ -161,8 +98,10 @@
           <div *ngFor="let control of hiddenLayer.controls; let i = index" class="row mb-1">
 
             <div class="col-4
+              col-md-2
               col-lg-1
-              col-xl-3">
+              col-xl-4
+              me-xl-3">
                 <div class="col">
                   <input class="form-control"
                     [formControlName]="i"
@@ -173,7 +112,7 @@
 
             <div class="col-8
               col-lg-11
-              col-xl-9
+              col-xl-auto
               d-flex
               align-items-end
               justify-content-start">
@@ -198,6 +137,69 @@
         </div>
       </form>
     </div>
+
+
+   <!-- Network Creation Form -->
+    <div class="row my-4">
+      <h5>
+        Create your network
+      </h5>
+    </div>
+
+    <form class="form-group" [formGroup]="modelCreationForm">
+      <div class="row g-3 mb-4 align-items-end">
+
+        <div class="col-auto">
+
+          <label for="">
+            <p>
+              Activation
+            </p>
+          </label>
+
+          <select class="form-select"
+            formControlName="numOfLayers">
+            <option class="placeholder"
+              value=""
+              disabled
+              selected>
+              Choose your activation function
+            </option>
+            <option>Sigmoid</option>
+            <option>ReLU</option>
+          </select>
+
+        </div>
+
+        <div class="col-auto">
+
+          <label for="">
+            <p>
+              Learning Rate
+            </p>
+          </label>
+
+          <input class="form-control" placeholder="0.015">
+
+        </div>
+
+        <div class="col-auto">
+
+          <label for="">
+            <p>
+              Optimizer
+            </p>
+          </label>
+
+          <select class="form-select"
+            formControlName="numOfLayers">
+            <option>Backpropagation</option>
+            <option>Stochastic</option>
+          </select>
+
+        </div>
+      </div>
+    </form>
   </div>
 
 </div>
