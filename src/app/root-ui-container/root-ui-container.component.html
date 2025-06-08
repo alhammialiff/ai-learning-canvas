@@ -1,6 +1,41 @@
+<!-- DEV NOTE -->
+<div class="container dev-note" [class.hide-dev-note]="hideDevNote">
+  <div class="row mb-4">
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <span class="material-symbols-outlined">
+            sticky_note_2
+          </span>
+          <strong>Note from dev</strong>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <span class="material-symbols-outlined close-button" (click)="onCloseDevNote()">
+            close
+          </span>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <p>Hey there.</p>
+          <p>This is my leisure project as I aim to relearn AI and apply it in my dev works. There will tons of commits as you read this, though the frequency of it depends on how much pockets of time I have and brain juice I have left at the end of the day lol.</p>
+          <p>Ultimately, I hope this note will be gone forever someday - signifying the completion of this app.</p>
+          <p>Please note that Github Page only supports static pages. Meaning, there isn't a backend serving data required for deep learning training. Nevertheless, this works began as a full stack project, and I intend to end it the same way. Thus, if you're interested, the repo could be found in <a href="https://github.com/alhammialiff/ai-learning-canvas-backend">alhammialiff/ai-learning-canvas-backend</a></p>
+          <br>
+          <p>Thanks for spending some time to check out the page.</p>
+          <p><strong>Alhammi Aliff</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END OF DEV NOTE -->
+
 <div class="container">
   <div class="row">
     <app-sidenav-container></app-sidenav-container>
     <app-main-content-container></app-main-content-container>
   </div>
 </div>
+

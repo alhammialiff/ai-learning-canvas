@@ -1,6 +1,7 @@
 import { BreakpointObserverService } from './../ng-service/breakpoint-observer.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root-ui-container',
@@ -8,6 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./root-ui-container.component.scss']
 })
 export class RootUiContainerComponent {
+
+  hideDevNote: boolean = false;
+
+  hideDevNote$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private breakpointObserverService:BreakpointObserverService){}
 
@@ -69,6 +74,24 @@ export class RootUiContainerComponent {
 
     //   },
     // })
+
+    this.hideDevNote$.subscribe({
+      next: (state) => {
+
+        this.hideDevNote = state;
+
+      },
+      error: () => {
+
+
+      }
+    })
+
+  }
+
+  onCloseDevNote(){
+
+    this.hideDevNote$.next(true);
 
   }
 }

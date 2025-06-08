@@ -1,0 +1,32 @@
+.dev-note{
+  width: 400px;
+  position: absolute;
+  right: 5px;
+  top: 20px;
+  z-index: 2;
+  padding: 10px;
+  background-color: #fffaae;
+  opacity: 0.85;
+  border-radius: 12px;
+  font-size: 0.8rem;
+
+}
+
+.hide-dev-note{
+
+  display: none;
+
+}
+
+.close-button{
+
+  cursor: pointer;
+
+}
+
+.close-button:hover{
+
+  color: #3d3d3d;
+  font-weight: 600;
+  transition: color 0.25s ease-in-out;
+}
