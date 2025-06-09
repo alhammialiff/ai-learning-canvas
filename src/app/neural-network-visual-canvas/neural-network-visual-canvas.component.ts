@@ -25,7 +25,6 @@ export class NeuralNetworkVisualCanvasComponent {
     y: number
   }[][] = []
 
-
   neuron: any;
   svg: any;
 
@@ -40,6 +39,8 @@ export class NeuralNetworkVisualCanvasComponent {
   layerHeight: number = this.canvasHeight;
 
   ngOnInit(){
+
+    this.onResize();
 
     this.deepLearningService.emitLayerShape.subscribe({
 
@@ -76,20 +77,30 @@ export class NeuralNetworkVisualCanvasComponent {
     const width = window.innerWidth;
 
     if (width < 576) { // xs
+
       this.canvasWidth = 320;
       this.canvasHeight = 240;
+
     } else if (width >= 576 && width < 768) { // sm
+
       this.canvasWidth = 480;
       this.canvasHeight = 320;
+
     } else if (width >= 768 && width < 992) { // md
-      this.canvasWidth = 600;
+
+      this.canvasWidth = 800;
       this.canvasHeight = 400;
+
     } else if (width >= 992 && width < 1200) { // lg
-      this.canvasWidth = 700;
+
+      this.canvasWidth = 900;
       this.canvasHeight = 600;
+
     } else { // xxl and above
-      this.canvasWidth = 700;
+
+      this.canvasWidth = 900;
       this.canvasHeight = 600;
+
     }
 
     this.drawNetwork();
@@ -97,6 +108,10 @@ export class NeuralNetworkVisualCanvasComponent {
   }
 
   drawNetwork(){
+
+    if (!this.neuralNetworkCanvas || !this.neuralNetworkCanvas.nativeElement) {
+      return;
+    }
 
     this.neuronPositions2DList = [];
 
@@ -231,7 +246,6 @@ export class NeuralNetworkVisualCanvasComponent {
         }
 
       }
-
 
     });
 
