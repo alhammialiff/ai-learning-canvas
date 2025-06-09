@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import * as Papa from 'papaparse';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,58 @@ export class DatasetService {
       body,
       { headers: httpHeaders }
     );
+
+  }
+
+  parseGithubPageDataset = (datasetName:string): Observable<any> => {
+
+    var datasetPath: string | null = null;
+
+    switch(datasetName){
+
+      case 'iris':
+
+        datasetPath = '/assets/github-page-resource/iris.csv';
+
+        break;
+
+      case 'heartdisease':
+
+        datasetPath = '/assets/github-page-resource/heartdisease.csv';
+
+        break;
+
+      case 'bankmarketing':
+
+        datasetPath = '/assets/github-page-resource/bankmarketing.csv';
+
+        break;
+
+      case 'studentperformance':
+
+        datasetPath = '/assets/github-page-resource/studentperformance.csv';
+
+        break;
+
+      default:
+
+        datasetPath = '/assets/github-page-resource/iris.csv';
+
+        break;
+
+    }
+
+    return this.httpClient
+      .get(datasetPath, {
+        responseType: 'text'
+      })
+      .pipe(
+        map(csv => {
+
+          return Papa.parse(csv, {header: true}).data
+
+        })
+      );
 
   }
 

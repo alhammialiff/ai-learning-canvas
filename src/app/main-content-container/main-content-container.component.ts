@@ -105,6 +105,34 @@ export class MainContentContainerComponent {
 
   }
 
+  onClickDataset(event: Event){
+
+    const target = event.target as HTMLElement;
+    var datasetTitle = target.innerText.toLowerCase();
+
+    if(datasetTitle.split('').length > 1){
+
+      datasetTitle = datasetTitle.split('').reduce((a,b) => a + b);
+
+    }
+
+    this.datasetService.parseGithubPageDataset(datasetTitle).subscribe({
+
+      next: (csv)=>{
+
+        console.log(csv);
+
+      },
+      error: () => {
+
+
+
+      }
+
+    })
+
+  }
+
   get hiddenLayer(): FormArray {
 
     return this.layerShapeForm.get('hiddenLayer') as FormArray;

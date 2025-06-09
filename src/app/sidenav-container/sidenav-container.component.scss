@@ -3,7 +3,7 @@
   position: fixed;
   top: 0px;
   left: 0px;
-  background-color: #5a5a5a;
+  background-color: #363636;
   // border: 1px solid black;
   width: 200px;
   height: 100vh;
@@ -16,7 +16,7 @@
   position: fixed;
   top: 0px;
   left: 0px;
-  background-color: #5a5a5a;
+  background-color: #363636;
   // border: 1px solid black;
   width: 100px;
   height: 100vh;
@@ -89,7 +89,8 @@
 .drawer-button-open:hover, .drawer-button-close:hover{
 
   color: #f2f2f2;
-  background-color: #a0a0a0;
+  // background-color: #a0a0a0;
+  background-color: #b3831c;
   transition: color 0.25s ease-in-out;
   transition: background-color 0.25s ease-in-out;
 
@@ -105,9 +106,10 @@
 
 
   p{
+    // background-color: #ffffff;
     background-color: #ffffff;
     border-radius: 50px;
-    box-shadow: #07b115 1px 2px 2px;
+    box-shadow: #f4ab24 1px 2px 2px;
   }
 
 }
@@ -131,7 +133,8 @@ ul {
   li:hover{
 
     color: #f2f2f2;
-    background-color: #a0a0a0;
+    // background-color: #a0a0a0;
+    background-color: #b3831c;
     transition: color 0.25s ease-in-out;
     transition: background-color 0.25s ease-in-out;
 
