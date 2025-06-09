@@ -20,6 +20,10 @@ export class MainContentContainerComponent {
 
   containerMarginLeft = '0px';
 
+  parsedDataset: any;
+  parsedColumn: any;
+  selectedDatasetTitle: string | null = null;
+
   modelCreationForm: FormGroup = new FormGroup({
     numOfLayers: new FormControl('')
   })
@@ -43,6 +47,9 @@ export class MainContentContainerComponent {
   ){}
 
   ngOnInit(){
+
+    // Init Iris dataset for Github Page
+    this.demoIrisDataset();
 
     // Send a little test signal to kick start the stack works
     // this.datasetService.sendApiTestSignal().subscribe({
@@ -108,18 +115,43 @@ export class MainContentContainerComponent {
   onClickDataset(event: Event){
 
     const target = event.target as HTMLElement;
-    var datasetTitle = target.innerText.toLowerCase();
+    this.selectedDatasetTitle = target.innerText.toLowerCase();
 
-    if(datasetTitle.split('').length > 1){
+    if(this.selectedDatasetTitle.split('').length > 1){
 
-      datasetTitle = datasetTitle.split('').reduce((a,b) => a + b);
+      this.selectedDatasetTitle = this.selectedDatasetTitle.split('').reduce((a,b) => a + b);
 
     }
 
-    this.datasetService.parseGithubPageDataset(datasetTitle).subscribe({
+    this.datasetService.parseGithubPageDataset(this.selectedDatasetTitle).subscribe({
 
       next: (csv)=>{
 
+        this.parsedDataset = Array.isArray(csv) ? [...csv] : [];
+        this.parsedColumn = Object.keys(this.parsedDataset[0]).length;
+        console.log(csv);
+
+      },
+      error: () => {
+
+
+
+      }
+
+    })
+
+  }
+
+  demoIrisDataset(){
+
+    this.selectedDatasetTitle = 'iris';
+
+    this.datasetService.parseGithubPageDataset(this.selectedDatasetTitle).subscribe({
+
+      next: (csv)=>{
+
+        this.parsedDataset = Array.isArray(csv) ? [...csv] : [];
+        this.parsedColumn = Object.keys(this.parsedDataset[0]).length;
         console.log(csv);
 
       },

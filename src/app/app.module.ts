@@ -14,6 +14,7 @@ import { SidenavService } from './ng-service/sidenav.service';
 import { DeepLearningService } from './ng-service/deep-learning.service';
 import { DatasetService } from './ng-service/dataset.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { DataTableComponent } from './data-table/data-table.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
     RootUiContainerComponent,
     SidenavContainerComponent,
     MainContentContainerComponent,
-    NeuralNetworkVisualCanvasComponent
+    NeuralNetworkVisualCanvasComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,

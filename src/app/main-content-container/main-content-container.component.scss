@@ -152,8 +152,14 @@ h5{
 .jumbotron{
 
   padding: 20px;
-  // background-color:rgb(134, 159, 134);
-  background-color:rgb(192, 143, 58);
+  background-color:rgb(134, 159, 134);
+  // background-color:rgb(192, 143, 58);
+
+}
+
+.jumbotron-header{
+
+  text-shadow: 2px 2px 4px rgba(28, 28, 28, 0.5);
 
 }
 

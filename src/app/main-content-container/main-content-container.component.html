@@ -39,7 +39,7 @@
 
     <div  id="bank-marketting-grid" class="grid-item" (click)="onClickDataset($event)">
       <div class="dataset-title">
-        Bank Marketting
+        Bank Marketing
       </div>
     </div>
 
@@ -54,6 +54,28 @@
   <div class="row mt-5">
     <hr>
   </div>
+
+  <div *ngIf="selectedDatasetTitle" class="row my-4">
+    <h5>Have a peek at your dataset - <i>{{selectedDatasetTitle}}.csv</i></h5>
+  </div>
+
+  <!-- Dataset Table -->
+  <div *ngIf="parsedDataset" class="container">
+    <div class="row">
+      <app-data-table [dataset]="parsedDataset"></app-data-table>
+    </div>
+
+    <div *ngIf="parsedDataset && parsedColumn" class="row">
+      <div class="col">
+        {{parsedDataset?.length}} rows, {{parsedColumn}} attributes
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="parsedDataset" class="row mt-5">
+    <hr>
+  </div>
+
 
   <!-- Neural Network Canvas -->
   <div class="row my-4">
