@@ -88,7 +88,7 @@ export class NeuralNetworkVisualCanvasComponent {
 
     } else if (width >= 768 && width < 992) { // md
 
-      this.canvasWidth = 800;
+      this.canvasWidth = 700;
       this.canvasHeight = 400;
 
     } else if (width >= 992 && width < 1200) { // lg
@@ -110,7 +110,9 @@ export class NeuralNetworkVisualCanvasComponent {
   drawNetwork(){
 
     if (!this.neuralNetworkCanvas || !this.neuralNetworkCanvas.nativeElement) {
+
       return;
+
     }
 
     this.neuronPositions2DList = [];

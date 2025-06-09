@@ -7,13 +7,15 @@
 
 hr{
 
-  color: #50350d;
+  color: #3d573f;
+  border: 1px solid #3d573f;
 
 }
 
 h5{
 
-  font-weight: 600;
+  color: rgb(185, 156, 39);
+  font-weight: 200;
 
 }
 
@@ -144,6 +146,15 @@ h5{
 
 }
 
+.jumbotron{
+
+  padding: 20px;
+  // border: 1px solid;
+  background-color:rgb(134, 159, 134);
+  // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
+
+}
+
 // =====================================================
 // SM
 @media (min-width: 	576px) and (max-width: 767.98px) {
@@ -182,6 +193,7 @@ h5{
     padding: 20px;
     // border: 1px solid;
     background-color:rgb(159, 181, 159);
+    // box-shadow: 2px 2px 6px rgb(164, 164, 164);
     // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
 
   }
@@ -216,13 +228,13 @@ h5{
 
   .container{
 
-    width: 900px;
+    width: 850px;
 
   }
 
   .main-content-container{
 
-    margin-left: 200px;
+    margin-left: 100px;
 
   }
 
@@ -232,14 +244,14 @@ h5{
 
   }
 
-  .jumbotron{
+  // .jumbotron{
 
-    padding: 20px;
-    // border: 1px solid;
-    background-color:rgb(159, 181, 159);
-    // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
+  //   padding: 20px;
+  //   // border: 1px solid;
+  //   background-color:rgb(159, 181, 159);
+  //   // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
 
-  }
+  // }
 
   .jumbotron-header{
 
@@ -288,13 +300,6 @@ h5{
   }
 
 
-  .jumbotron{
-
-    padding: 20px;
-    background-color:rgb(159, 181, 159);
-
-  }
-
   .jumbotron-header{
 
     margin-top: 100px;
@@ -330,23 +335,13 @@ h5{
 
   .main-content-container{
 
-    margin-left: 10px;
+    margin-left: 50px;
 
   }
 
   .custom-button{
 
     margin-left: 30px;
-
-  }
-
-
-  .jumbotron{
-
-    padding: 20px;
-    // border: 1px solid;
-    background-color:rgb(159, 181, 159);
-    // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
 
   }
 
@@ -379,7 +374,7 @@ h5{
 
   .container{
 
-    width: 900px;
+    width: 1000px;
 
   }
 
@@ -392,15 +387,6 @@ h5{
   .custom-button{
 
     margin-left: 30px;
-
-  }
-
-  .jumbotron{
-
-    padding: 20px;
-    // border: 1px solid;
-    background-color:rgb(159, 181, 159);
-    // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
 
   }
 
@@ -441,22 +427,13 @@ h5{
 
   .main-content-container{
 
-    margin-left: 180px;
+    margin-left: 140px;
 
   }
 
   .custom-button{
 
     margin-left: 30px;
-
-  }
-
-  .jumbotron{
-
-    padding: 20px;
-    // border: 1px solid;
-    background-color:rgb(159, 181, 159);
-    // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
 
   }
 
@@ -484,26 +461,17 @@ h5{
 }
 
 // XL (Upper)
-@media (min-width: 	1300px) and (max-width: 1399.98px) {
+@media (min-width: 1300px) and (max-width: 1399.98px) {
 
   .main-content-container{
 
-    margin-left: 150px;
+    margin-left: 100px;
 
   }
 
   .custom-button{
 
     margin-left: 30px;
-
-  }
-
-  .jumbotron{
-
-    padding: 20px;
-    // border: 1px solid;
-    background-color:rgb(159, 181, 159);
-    // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
 
   }
 
@@ -544,15 +512,6 @@ h5{
   .main-content-container{
 
     margin-left: 180px;
-
-  }
-
-  .jumbotron{
-
-    padding: 20px;
-    // border: 1px solid;
-    background-color:rgb(159, 181, 159);
-    // background: linear-gradient(140deg, rgb(111, 147, 111) 5%, #ffffff 100%);
 
   }
 

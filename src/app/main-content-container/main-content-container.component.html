@@ -58,7 +58,7 @@
   <!-- Neural Network Canvas -->
   <div class="row my-4">
 
-    <h5>Tinker With The Neural Network Canvas</h5>
+    <h5>Tinker With Neural Network Canvas</h5>
   </div>
 
   <div class="row mb-4">
@@ -94,6 +94,7 @@
               type="number" />
           </div>
         </div>
+
         <hr>
 
         <div class="row mb-3">
@@ -106,10 +107,10 @@
           <div *ngFor="let control of hiddenLayer.controls; let i = index" class="row mb-1">
 
             <div class="col-4
-              col-md-2
-              col-lg-1
-              col-xl-4
-              me-xl-3">
+              col-md-4
+              col-lg-2
+              col-xl-2
+              col-xxl-2">
                 <div class="col">
                   <input class="form-control"
                     [formControlName]="i"
@@ -119,10 +120,13 @@
             </div>
 
             <div class="col-8
-              col-lg-11
+              col-md-auto
+              col-lg-auto
               col-xl-auto
+              col-xxl-auto
+              px-lg-2
+              px-xl-4
               d-flex
-              align-items-end
               justify-content-start">
               <button class="custom-button" (click)="addHiddenLayerFormControl()">+</button>
             </div>
