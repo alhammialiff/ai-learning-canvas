@@ -1,0 +1,184 @@
+.footer-container{
+
+  background-color: rgb(205, 175, 55);
+  font-size: 0.9rem;
+
+}
+
+.section-header{
+
+  // font-weight: 600;
+  text-shadow: 1px 1px 1px black;
+
+}
+
+.social-icon{
+  width: 30px;
+}
+
+a{
+
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+
+}
+
+a:hover{
+
+  color: black;
+  font-weight: 600;
+  transition: font-weight 0.25s ease-in;
+
+}
+
+
+// =====================================================
+// SM
+@media (min-width: 	576px) and (max-width: 767.98px) {
+
+  //TODO
+
+}
+
+// =====================================================
+// MD
+@media (min-width: 	768px) and (max-width: 991.98px) {
+
+  .container{
+
+    max-width: 991.98px;
+
+  }
+
+
+}
+// =====================================================
+
+// =====================================================
+// LG (1st Quarter)
+@media (min-width: 992px) and (max-width: 1050px) {
+
+  .container{
+
+    width: 850px;
+
+  }
+
+  .footer-container{
+
+    margin-left: 100px;
+
+  }
+
+
+
+}
+
+// LG (2nd Quarter)
+@media (min-width:  1051px) and (max-width: 1100px) {
+
+  .container{
+
+    width: 900px;
+
+  }
+
+  .footer-container{
+
+    margin-left: 80px;
+
+
+  }
+
+}
+
+// LG (3rd Quarter)
+@media (min-width:  1101px) and (max-width: 1150px) {
+
+  .container{
+
+    width: 900px;
+
+  }
+
+  .footer-container{
+
+    margin-left: 50px;
+
+  }
+
+}
+
+// LG (4th Quarter)
+@media (min-width: 1151px) and (max-width: 1199.98px) {
+
+  .container{
+
+    width: 1000px;
+
+  }
+
+  .footer-container{
+
+    margin-left: 10px;
+
+  }
+
+
+}
+// =====================================================
+
+// =====================================================
+// XL (Lower)
+@media (min-width: 	1200px) and (max-width: 1299.98px) {
+
+  .container{
+
+    width: 900px;
+
+  }
+
+  .footer-container{
+
+    margin-left: 140px;
+
+  }
+
+
+
+}
+
+// XL (Upper)
+@media (min-width: 1300px) and (max-width: 1399.98px) {
+
+  .footer-container{
+
+    margin-left: 100px;
+
+  }
+
+
+}
+// =====================================================
+
+// =====================================================
+// XXL
+@media (min-width: 1400px) {
+
+  .container{
+
+    width: 1100px;
+
+  }
+
+  .footer-container{
+
+      margin-left: 175px;
+
+  }
+
+
+
+
+}
