@@ -38,6 +38,25 @@ export class MainContentContainerComponent {
 
   layerShape: number[] = [];
 
+  // 5 of these models for a start
+  machineLearningModelList: string[] = [
+    'Logistic Regression',
+    'Linear Regression',
+    'Lasso Regression',
+    'Ridge Regression',
+    'KNN'
+  ]
+
+  // Form to allow user select pipeline to preprocess, fit and evaluate model
+  machineLearningModelForm: FormGroup = new FormGroup(
+    {
+      model: new FormControl(),
+      testSplit: new FormControl(0.0),
+      applyNormalisation: new FormControl(true),
+      kFoldSplit: new FormControl(0),
+    }
+  )
+
   constructor(
     private datasetService: DatasetService,
     private deepLearningService: DeepLearningService,

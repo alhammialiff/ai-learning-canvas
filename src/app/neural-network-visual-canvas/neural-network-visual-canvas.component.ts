@@ -71,7 +71,7 @@ export class NeuralNetworkVisualCanvasComponent {
   }
 
   // Resize NN Canvas according to current inner viewport width
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   onResize(){
 
     const width = window.innerWidth;

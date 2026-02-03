@@ -566,4 +566,20 @@ input.form-control{
 
 }
 
+/* Change active tab color */
+.nav-pills .nav-link.active {
+  background-color: #5d8a61;
+  color: #f1b417;
+}
+
+/* Change hover color */
+.nav-pills .nav-link:hover {
+  background-color: #4e7752;
+  color: #ffb700;
+}
+
+/* Change inactive tab color */
+.nav-pills .nav-link {
+  color: rgb(43, 43, 43)
+}
 

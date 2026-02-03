@@ -41,7 +41,7 @@ export class SidenavContainerComponent {
 
   }
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   closeOnWebMd(){
 
     const width = window.innerWidth;

@@ -13,7 +13,7 @@ export class DatasetService {
   ) {}
 
   // ==================================================
-  // API Test Signal - Sole to test receipt of data at
+  // API Test Signal - Sole to test receipt of data from
   //                   Flask
   // ==================================================
   sendApiTestSignal = (): Observable<any> => {
